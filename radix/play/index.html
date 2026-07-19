@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6792477637">
+<title>Radix — Daily Word Origins</title>
+<meta property="og:title" content="Radix — a daily word game about where words come from">
+<meta property="og:description" content="You see an ancient root. You deduce the modern word it became. One a day, in English and German.">
+<style>
+  :root{--paper:#F6F1E6;--ink:#292F26;--soft:rgba(41,47,38,.62);--leaf:#4A6B45;--amber:#B87D33;--card:rgba(255,255,255,.65)}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:Georgia,'Times New Roman',serif;-webkit-font-smoothing:antialiased}
+  .shell{max-width:520px;margin:0 auto;padding:18px 20px 60px;min-height:100dvh}
+  header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+  .wordmark{letter-spacing:.32em;font-weight:700;font-size:15px}
+  .streak{font-size:13px;color:var(--leaf)}
+  .tracks{display:flex;border:1px solid rgba(41,47,38,.18);border-radius:10px;overflow:hidden;margin:8px 0 20px}
+  .tracks button{flex:1;padding:10px;border:0;background:none;font:inherit;font-size:14px;cursor:pointer;color:var(--soft)}
+  .tracks button.on{background:#fff;color:var(--ink);font-weight:700}
+  .root{font-size:44px;font-weight:700;margin:6px 0 2px}
+  .gloss{font-style:italic;color:var(--soft);margin-bottom:14px}
+  .chain{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:18px}
+  .chain span{font-family:-apple-system,system-ui,sans-serif;font-size:11px;font-weight:600;background:var(--card);padding:4px 9px;border-radius:99px}
+  .chain i{color:var(--soft);font-style:normal;font-size:10px}
+  .clue{display:flex;gap:10px;background:var(--card);border-radius:12px;padding:12px;margin-bottom:10px}
+  .clue b{flex:none;width:22px;height:22px;border-radius:50%;background:var(--amber);color:#fff;font-family:-apple-system,sans-serif;font-size:12px;display:grid;place-items:center}
+  .clue .lab{font-family:-apple-system,sans-serif;font-size:10px;letter-spacing:.14em;color:var(--soft)}
+  .guessrow{display:flex;gap:10px;margin-top:6px}
+  input{flex:1;font:inherit;font-size:16px;padding:12px;border:1px solid rgba(41,47,38,.2);border-radius:10px;background:#fff}
+  button.go{font-family:-apple-system,sans-serif;font-size:14px;font-weight:600;color:#fff;background:var(--leaf);border:0;border-radius:10px;padding:12px 16px;cursor:pointer}
+  .miss{color:var(--amber)}.hit{color:var(--leaf)}
+  .past{font-size:16px;margin:6px 0}
+  .result{background:rgba(255,255,255,.75);border-radius:14px;padding:16px;margin-top:14px}
+  .result h2{margin:0 0 8px;font-size:19px}
+  .story{margin:10px 0;line-height:1.55;font-size:16px}
+  .story.de{font-size:13.5px;color:var(--soft)}
+  .row{display:flex;gap:10px;margin-top:10px}
+  .row button{font-family:-apple-system,sans-serif;font-size:13px;padding:10px 14px;border-radius:9px;cursor:pointer;border:1px solid rgba(41,47,38,.25);background:none;color:var(--ink)}
+  .row button.primary{background:var(--leaf);border:0;color:#fff}
+  .badge{margin-top:26px;text-align:center}
+  .badge a{font-family:-apple-system,sans-serif;font-size:13px;color:var(--leaf);text-decoration:none;border:1px solid var(--leaf);padding:10px 18px;border-radius:99px}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:9px 16px;border-radius:9px;font-family:-apple-system,sans-serif;font-size:13px;opacity:0;transition:opacity .3s}
+  .toast.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header><div class="wordmark">RADIX<span style="color:var(--amber)">.</span></div><div class="streak" id="streak"></div></header>
+  <div class="tracks"><button id="tEn" class="on">English</button><button id="tDe">Deutsch</button></div>
+  <div id="game"></div>
+  <div class="badge"><a href="https://apps.apple.com/app/id6792477637">Get Radix on the App Store</a></div>
+</div>
+<div class="toast" id="toast"></div>
+<script id="data" type="application/json">{"puzzles": [{"puzzle_id": "seed-01-en", "track": "en", "answer": "fee", "accepted": ["fee", "fees"], "root": {"form": "*pe\u1e31u", "gloss": "livestock, wealth"}, "chain": ["PIE", "Proto-Germanic", "Old English", "English"], "sibling": {"word": "Vieh", "lang": "de", "gloss": "cattle"}, "drift_hint": "Payment owed for a service; once counted on the hoof.", "story_en": "Before coins, wealth walked on four legs. The Indo-European root *pe\u1e31u meant livestock, and cattle were money: German kept the animals as Vieh, while English kept the payment as fee. Latin took the same root to pecunia, money, which is why questionable finances are still pecuniary.", "story_de": "Bevor es M\u00fcnzen gab, lief das Verm\u00f6gen auf vier Beinen. Die Wurzel *pe\u1e31u bedeutete Vieh, und Rinder waren Geld: Das Deutsche behielt die Tiere als Vieh, das Englische die Zahlung als fee. Lateinisch pecunia, Geld, stammt von derselben Wurzel."}, {"puzzle_id": "seed-02-en", "track": "en", "answer": "muscle", "accepted": ["muscle", "muscles"], "root": {"form": "m\u016bs", "gloss": "mouse"}, "chain": ["PIE", "Latin", "French", "English"], "sibling": {"word": "Maus", "lang": "de", "gloss": "mouse"}, "drift_hint": "Flex your arm and a small animal seems to move under the skin.", "story_en": "Roman anatomists watching a bicep flex saw a little mouse running under the skin and called it musculus, little mouse. The image stuck for two thousand years. German Maus and English mouse keep the animal; muscle keeps the anatomy joke.", "story_de": "R\u00f6mische Anatomen sahen beim Anspannen des Bizeps eine kleine Maus unter der Haut laufen und nannten ihn musculus, M\u00e4uschen. Das Bild hielt zweitausend Jahre. Maus und mouse behalten das Tier; muscle beh\u00e4lt den anatomischen Scherz."}, {"puzzle_id": "seed-03-en", "track": "en", "answer": "salary", "accepted": ["salary", "salaries"], "root": {"form": "*sal-", "gloss": "salt"}, "chain": ["PIE", "Latin", "Old French", "English"], "sibling": {"word": "Salz", "lang": "de", "gloss": "salt"}, "drift_hint": "Monthly pay, once measured out in something you could season with.", "story_en": "Roman soldiers received a salarium, an allowance tied to salt, the era's preservative and prize. From salt money to any regular pay: salary. German Salz and English salt stayed close to the root; the paycheck drifted furthest and kept the best story.", "story_de": "R\u00f6mische Soldaten erhielten ein salarium, eine Zulage rund ums Salz, damals Konservierungsmittel und Kostbarkeit. Aus Salzgeld wurde jede regelm\u00e4\u00dfige Zahlung: salary. Salz und salt blieben nah an der Wurzel; der Gehaltsscheck wanderte am weitesten."}, {"puzzle_id": "seed-04-en", "track": "en", "answer": "book", "accepted": ["book", "books"], "root": {"form": "*b\u014dk-", "gloss": "beech tree"}, "chain": ["Proto-Germanic", "Old English", "English"], "sibling": {"word": "Buche", "lang": "de", "gloss": "beech tree"}, "drift_hint": "Pages between covers; once runes cut into hardwood.", "story_en": "Early Germanic writing was scratched onto beechwood tablets. The tree lent its name to the text: Proto-Germanic *b\u014dk- gives German Buche, the beech, and English book, the thing you read. German kept both, Buche and Buch, tree and text standing side by side.", "story_de": "Fr\u00fche germanische Schrift wurde in Buchenholz geritzt. Der Baum gab dem Text seinen Namen: *b\u014dk- wird zur Buche und zum englischen book. Das Deutsche behielt beides nebeneinander: Buche und Buch, Baum und Text."}, {"puzzle_id": "seed-05-de", "track": "de", "answer": "Fenster", "accepted": ["fenster"], "root": {"form": "fenestra", "gloss": "\u00d6ffnung in der Wand"}, "chain": ["Latein", "Althochdeutsch", "Deutsch"], "sibling": {"word": "defenestration", "lang": "en", "gloss": "das Hinauswerfen aus dem Fenster"}, "drift_hint": "Ohne sie w\u00e4re jedes Zimmer dunkel.", "story_en": "Germanic languages had wind-eye words, but along the Roman frontier Latin fenestra moved in, becoming German Fenster. English went the other way, keeping Norse windauga as window, and borrowed the Latin only for throwing things out of one: defenestration.", "story_de": "Germanische Sprachen hatten Windaugen-W\u00f6rter, doch an der r\u00f6mischen Grenze zog lateinisch fenestra ein und wurde zum Fenster. Das Englische behielt das nordische windauga als window und borgte das Lateinische nur f\u00fcrs Hinauswerfen: defenestration."}, {"puzzle_id": "seed-06-de", "track": "de", "answer": "Schule", "accepted": ["schule"], "root": {"form": "schol\u0113", "gloss": "Mu\u00dfe, freie Zeit"}, "chain": ["Griechisch", "Latein", "Althochdeutsch", "Deutsch"], "sibling": {"word": "school", "lang": "en", "gloss": "Ort des Lernens"}, "drift_hint": "Dorthin gehen Kinder jeden Morgen, ob sie wollen oder nicht.", "story_en": "Greek schol\u0113 meant leisure: the free time a citizen spent in conversation and thought. Discussing ideas became the point, so the word slid from free time to the place of instruction. Every Schule and school carries a small irony: it is named after not having to work.", "story_de": "Griechisch schol\u0113 hie\u00df Mu\u00dfe: die freie Zeit f\u00fcr Gespr\u00e4ch und Denken. Das Ideengespr\u00e4ch wurde zur Hauptsache, und so rutschte das Wort von der freien Zeit zum Ort des Unterrichts. Jede Schule tr\u00e4gt eine kleine Ironie im Namen: benannt nach dem Nichtarbeiten."}, {"puzzle_id": "seed-07-de", "track": "de", "answer": "Pfeffer", "accepted": ["pfeffer"], "root": {"form": "pippal\u012b", "gloss": "Beere, Pfefferkorn"}, "chain": ["Sanskrit", "Griechisch", "Latein", "Althochdeutsch", "Deutsch"], "sibling": {"word": "pepper", "lang": "en", "gloss": "Gew\u00fcrz"}, "drift_hint": "Schwarz, gemahlen, steht neben dem Salz.", "story_en": "One of the longest trade routes in any kitchen: Sanskrit pippal\u012b traveled with the spice itself through Greek and Latin into every European pantry. German Pfeffer shows the High German consonant shift at work, the same shift that turns English p into German pf.", "story_de": "Eine der l\u00e4ngsten Handelsrouten der K\u00fcche: Sanskrit pippal\u012b reiste mit dem Gew\u00fcrz \u00fcber Griechisch und Latein in jede europ\u00e4ische Speisekammer. Pfeffer zeigt die hochdeutsche Lautverschiebung bei der Arbeit, die aus englischem p ein deutsches pf macht."}, {"puzzle_id": "seed-08-shared-en", "track": "en", "answer": "wine", "accepted": ["wine", "wines"], "root": {"form": "v\u012bnum", "gloss": "wine"}, "chain": ["Latin", "Proto-Germanic", "Old English", "English"], "sibling": {"word": "Wein", "lang": "de", "gloss": "wine"}, "drift_hint": "Pressed, fermented, poured at dinner.", "story_en": "Latin vinum crossed the Rhine with Roman traders centuries before most Latin loans, early enough to be treated like a native Germanic word ever after. English wine and German Wein are the same borrowed guest, settled so long ago that nobody remembers the arrival.", "story_de": "Lateinisch vinum \u00fcberquerte den Rhein mit r\u00f6mischen H\u00e4ndlern, Jahrhunderte vor den meisten Lehnw\u00f6rtern, fr\u00fch genug, um fortan wie ein germanisches Erbwort behandelt zu werden. Wine und Wein sind derselbe Gast, so lange ans\u00e4ssig, dass niemand die Ankunft erinnert."}, {"puzzle_id": "seed-08-shared-de", "track": "de", "answer": "Wein", "accepted": ["wein"], "root": {"form": "v\u012bnum", "gloss": "Wein"}, "chain": ["Latein", "Urgermanisch", "Althochdeutsch", "Deutsch"], "sibling": {"word": "wine", "lang": "en", "gloss": "Wein"}, "drift_hint": "Gepresst, vergoren, zum Abendessen eingeschenkt.", "story_en": "Latin vinum crossed the Rhine with Roman traders centuries before most Latin loans, early enough to be treated like a native Germanic word ever after. English wine and German Wein are the same borrowed guest, settled so long ago that nobody remembers the arrival.", "story_de": "Lateinisch vinum \u00fcberquerte den Rhein mit r\u00f6mischen H\u00e4ndlern, Jahrhunderte vor den meisten Lehnw\u00f6rtern, fr\u00fch genug, um fortan wie ein germanisches Erbwort behandelt zu werden. Wine und Wein sind derselbe Gast, so lange ans\u00e4ssig, dass niemand die Ankunft erinnert."}, {"puzzle_id": "seed-09-de", "track": "de", "answer": "Mauer", "accepted": ["mauer"], "root": {"form": "m\u016brus", "gloss": "Stadtmauer, Schutzwall"}, "chain": ["Latein", "Althochdeutsch", "Deutsch"], "sibling": {"word": "mural", "lang": "en", "gloss": "Wandgem\u00e4lde"}, "drift_hint": "Aus Stein gebaut; eine ber\u00fchmte teilte Berlin.", "story_en": "Roman military engineering came with its vocabulary: murus, the defensive stone wall, became German Mauer, always the built stone kind, distinct from the softer Wand indoors. English took the adjective instead: a mural is literally what happens on a wall.", "story_de": "R\u00f6mische Milit\u00e4rtechnik kam mit ihrem Vokabular: murus, die steinerne Schutzmauer, wurde zur Mauer, stets die gebaute aus Stein, im Unterschied zur Wand im Haus. Das Englische nahm das Adjektiv: ein mural ist w\u00f6rtlich das, was auf der Mauer passiert."}, {"puzzle_id": "seed-10-en", "track": "en", "answer": "cheese", "accepted": ["cheese", "cheeses"], "root": {"form": "c\u0101seus", "gloss": "cheese"}, "chain": ["Latin", "Proto-Germanic", "Old English", "English"], "sibling": {"word": "K\u00e4se", "lang": "de", "gloss": "cheese"}, "drift_hint": "Milk, cultured and pressed; say it for the camera.", "story_en": "Another early Roman import along the Rhine trade: caseus became Old English cyse and German K\u00e4se in the same wave that brought wine and street. The Romance languages later reinvented their own word from formaticum, shaped, which is why French says fromage while English kept the older Latin.", "story_de": "Ein weiterer fr\u00fcher r\u00f6mischer Import am Rheinhandel: caseus wurde zu K\u00e4se und altenglisch cyse, in derselben Welle wie Wein und Stra\u00dfe. Die romanischen Sprachen erfanden sp\u00e4ter ihr eigenes Wort aus formaticum, geformt, daher franz\u00f6sisch fromage."}]}</script>
+<script>
+const DATA=JSON.parse(document.getElementById('data').textContent).puzzles;
+let track=localStorage.getItem('radix.track')||'en';
+const today=new Date().toISOString().slice(0,10);
+const dayNum=parseInt(today.replaceAll('-',''),10);
+function todays(t){const l=DATA.filter(p=>p.track===t);return l[dayNum%l.length]}
+function stateKey(){return 'radix.'+today+'.'+track}
+function load(){try{return JSON.parse(localStorage.getItem(stateKey()))||{g:[],solved:false}}catch{return{g:[],solved:false}}}
+function save(s){localStorage.setItem(stateKey(),JSON.stringify(s))}
+function bumpStreak(){
+  const s=JSON.parse(localStorage.getItem('radix.streak')||'{"last":null,"n":0}');
+  if(s.last===today)return;
+  const y=new Date(Date.now()-864e5).toISOString().slice(0,10);
+  s.n=(s.last===y)?s.n+1:1;s.last=today;
+  localStorage.setItem('radix.streak',JSON.stringify(s));
+}
+function streakN(){return JSON.parse(localStorage.getItem('radix.streak')||'{"n":0}').n}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
+function signal(type){
+  try{fetch('https://nom.telemetrydeck.com/v2/',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify([{appID:'763E89C1-0932-4B5C-9814-F37EE49968C6',clientUser:localStorage.getItem('radix.uid')||(()=>{const u=crypto.randomUUID();localStorage.setItem('radix.uid',u);return u})(),signalType:type,payload:{platform:'webdemo'}}])}).catch(()=>{})}catch(e){}
+}
+function render(){
+  const p=todays(track);const st=load();const el=document.getElementById('game');
+  document.getElementById('tEn').className=track==='en'?'on':'';
+  document.getElementById('tDe').className=track==='de'?'on':'';
+  document.getElementById('streak').textContent=streakN()>0?'\u2618 '+streakN():'';
+  const n=st.g.length;
+  let h='<div class="root">'+p.root.form+'</div><div class="gloss">\u201C'+p.root.gloss+'\u201D</div>';
+  h+='<div class="chain">'+p.chain.map((c,i)=>(i?'<i>\u2192</i>':'')+'<span>'+c+'</span>').join('')+'</div>';
+  const clues=[['SIBLING',(p.sibling.lang==='de'?'German ':'English ')+p.sibling.word+', \u201C'+p.sibling.gloss+'\u201D'],['DRIFT',p.drift_hint],['SHAPE',p.answer[0].toUpperCase()+' \u00B7 '+p.answer.length+' letters']];
+  for(let i=0;i<Math.min(n,3);i++)h+='<div class="clue"><b>'+(i+1)+'</b><div><div class="lab">'+clues[i][0]+'</div>'+clues[i][1]+'</div></div>';
+  for(const g of st.g)h+='<div class="past '+(ok(p,g)?'hit':'miss')+'">'+(ok(p,g)?'\u2618':'\u2717')+' '+g+'</div>';
+  if(st.solved||n>=4){
+    const step=n;
+    h+='<div class="result"><h2>'+(st.solved?p.answer+' \u00B7 solved in '+step:'It was \u201C'+p.answer+'\u201D. The tree keeps growing.')+'</h2>';
+    h+='<div class="story">'+(track==='de'?p.story_de:p.story_en)+'</div>';
+    h+='<div class="story de">'+(track==='de'?p.story_en:p.story_de)+'</div>';
+    h+='<div class="row"><button class="primary" onclick="share()">Share</button></div></div>';
+  }else{
+    h+='<div class="guessrow"><input id="w" placeholder="Your word" autocomplete="off" autocapitalize="off"><button class="go" onclick="guess()">Guess '+(n+1)+'/4</button></div>';
+  }
+  el.innerHTML=h;
+  const w=document.getElementById('w');if(w){w.addEventListener('keydown',e=>{if(e.key==='Enter')guess()})}
+}
+function ok(p,g){g=g.trim().toLowerCase();return p.accepted.includes(g)||p.answer.toLowerCase()===g}
+function guess(){
+  const w=document.getElementById('w');const v=(w.value||'').trim();if(!v)return;
+  const p=todays(track);const st=load();st.g.push(v);
+  if(ok(p,v)){st.solved=true;bumpStreak();signal('web.solved')}
+  else if(st.g.length>=4){bumpStreak();signal('web.failed')}
+  save(st);render();
+}
+function share(){
+  const p=todays(track);const st=load();const step=st.g.length;
+  const grid=[1,2,3,4].map(i=>i<step?'\u25AA\uFE0F':i===step?(st.solved?'\uD83C\uDF31':'\u25AA\uFE0F'):'\u2B1C\uFE0F').join('');
+  const txt='Radix '+track.toUpperCase()+' \u00B7 '+(st.solved?'solved in '+step:'the tree keeps growing')+'\n'+grid+'\nhttps://williamdalston.github.io/apps-web/radix/play/';
+  signal('web.shared');
+  if(navigator.share){navigator.share({text:txt}).catch(()=>{})}
+  else{navigator.clipboard.writeText(txt).then(()=>toast('Copied'))}
+}
+document.getElementById('tEn').onclick=()=>{track='en';localStorage.setItem('radix.track','en');render()};
+document.getElementById('tDe').onclick=()=>{track='de';localStorage.setItem('radix.track','de');render()};
+signal('web.opened');
+render();
+</script>
+</body>
+</html>
