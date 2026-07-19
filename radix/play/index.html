@@ -21,6 +21,7 @@
   .root{font-size:44px;font-weight:700;margin:6px 0 2px}
   .gloss{font-style:italic;color:var(--soft);margin-bottom:14px}
   .chain{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:18px}
+  .how{font-size:15px;line-height:1.5;color:var(--soft);background:var(--card);border-left:3px solid var(--amber);border-radius:0 10px 10px 0;padding:10px 14px;margin-bottom:16px}
   .chain span{font-family:-apple-system,system-ui,sans-serif;font-size:11px;font-weight:600;background:var(--card);padding:4px 9px;border-radius:99px}
   .chain i{color:var(--soft);font-style:normal;font-size:10px}
   .clue{display:flex;gap:10px;background:var(--card);border-radius:12px;padding:12px;margin-bottom:10px}
@@ -82,6 +83,9 @@ function render(){
   document.getElementById('streak').textContent=streakN()>0?'\u2618 '+streakN():'';
   const n=st.g.length;
   let h='<div class="root">'+p.root.form+'</div><div class="gloss">\u201C'+p.root.gloss+'\u201D</div>';
+  if(n===0&&!st.solved)h+='<div class="how">'+(track==='de'
+    ?'Aus dieser alten Wurzel wurde ein modernes deutsches Wort. Errate es. Vier Versuche, jeder Fehlversuch bringt einen Hinweis.'
+    :'This ancient root became a modern English word. Name it. Four guesses, and every miss reveals a clue.')+'</div>';
   h+='<div class="chain">'+p.chain.map((c,i)=>(i?'<i>\u2192</i>':'')+'<span>'+c+'</span>').join('')+'</div>';
   const clues=[['SIBLING',(p.sibling.lang==='de'?'German ':'English ')+p.sibling.word+', \u201C'+p.sibling.gloss+'\u201D'],['DRIFT',p.drift_hint],['SHAPE',p.answer[0].toUpperCase()+' \u00B7 '+p.answer.length+' letters']];
   for(let i=0;i<Math.min(n,3);i++)h+='<div class="clue"><b>'+(i+1)+'</b><div><div class="lab">'+clues[i][0]+'</div>'+clues[i][1]+'</div></div>';
